@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Portfolio Details - Personal Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Personal
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <main id="main">
+
+    <!-- ======= Portfolio Details ======= -->
+    <div id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-8">
+            <h2 class="portfolio-title" id="portfolio-title">This is an example of portfolio detail</h2>
+
+           
+              <!-- <div class="swiper-pagination"></div> -->
+            </div>
+
+          </div>
+          <div style="display: flex;">
+            <div class="portfolio-details-slider swiper">
+              <!-- <div class="swiper-wrapper align-items-center"> -->
+  
+                <div class="swiper-slide">
+                  <img id="img-1" src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                </div>
+  
+                <!-- <div class="swiper-slide">
+                  <img id="img-2" src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
+                </div> -->
+  
+                <!-- <div class="swiper-slide">
+                  <img id="img-3" src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                </div> -->
+  
+              </div>
+  
+            <div class="col-lg-4 portfolio-info">
+              <h3>Project Name</h3>
+              <ul>
+                <li id="project-date"><strong>Project date</strong>: </li>
+                <li id="teamsize"><strong>Team size</strong>: </li>
+                <li id="role"><strong>Role</strong>: </li>
+                <li id="description"><strong>Description</strong>: </li>
+                <li id="technology"><strong>Technology</strong>: </li>
+                <li id="database"><strong>Database</strong>: </li>
+                <li id="url"><strong>Project URL</strong>: <a href="">www.example.com</a></li>
+              </ul>
+  
+  
+            </div>
+          </div>
+          
+
+        </div>
+
+      </div>
+    </div><!-- End Portfolio Details -->
+
+  </main><!-- End #main -->
+
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
+    Contact me <a href="https://www.facebook.com/profile.php?id=100063510335122 ">Facebook</a>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/details.js"></script>
+  <script>
+    // document.onload = ()=>{
+    //   const title = document.getElementById('portfolio-title')
+    //   console.log(title);
+    // }
+    const project = JSON.parse(localStorage.getItem('projectInfo'))
+    const title = document.getElementById('portfolio-title')
+    const detailsProjectName = document.querySelector('.portfolio-info h3');
+    const detailsProjectDate = document.getElementById('project-date');
+    const detailsTeamSize = document.getElementById('teamsize');
+    const roleProject = document.getElementById('role');
+    const detailsDescription = document.getElementById('description');
+    const detailsURL = document.getElementById('url');
+    const technologyProject = document.getElementById('technology');
+    const databaseProject = document.getElementById('database');
+    const img1 = document.getElementById('img-1');
+    const img2 = document.getElementById('img-2');
+    const img3 = document.getElementById('img-3');
+
+    title.innerHTML = project.title
+    detailsProjectName.innerHTML = project.projectName;
+    detailsProjectDate.innerHTML = "Project date: " + project.projectDate;
+    detailsTeamSize.innerHTML = "Team size: " + project.teamSize;
+    roleProject.innerHTML = "Role: " + project.role;
+    detailsDescription.innerHTML = `
+    <span>Description: ${project.description}</span>
+      <ul style="padding-left: 20px;">
+        ${project.descriptionDetails.map(detail => `<li>&#8226;   ${detail}</li>`).join('')}
+      </ul>`;
+    technologyProject.innerHTML = "Technology: " + project.technology;
+    databaseProject.innerHTML = "Database: " + project.database;
+    detailsURL.innerHTML = `Project URL:  <a href=${project.url} target="_blank">${project.url}</a>`;
+    img1.src = project.img.img1;
+    img2.src = project.img.img2 || "default-image-url.jpg";;
+    // img3.src = project.img.img3;
+  </script>
+
+
+</body>
+
+</html>
